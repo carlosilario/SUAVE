@@ -23,9 +23,17 @@ import scipy as sp
 
 def fuselage_parasite_drag(vehicle,conditions):
     
+    # ----- Add equation here ----------------------############
+
+    # You will need a unpack a vehicle value for this calculation,
+    # use the syntax shown below
+    
+    Re = 0
+    
+    # ----------------------------------------------############
+    
     # Unpack values needed for computations
-    T = conditions.freestream.temperature
-    Re = conditions.freestream.reynolds_number
+    T  = conditions.freestream.temperature
     Ma = conditions.freestream.mach_number
     reference_area = vehicle.reference_area
     
@@ -35,7 +43,8 @@ def fuselage_parasite_drag(vehicle,conditions):
     
     cd_misc = miscellaneous_drag(vehicle)
     
-    # define total_cd
+    # ----- Add equations here ---------------------############
+    # determine total cd and flat plate area
     total_cd = 0
     
     return total_cd

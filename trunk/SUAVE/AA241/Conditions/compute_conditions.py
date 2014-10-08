@@ -20,7 +20,7 @@ from SUAVE.Structure import (
 Data, Container, Data_Exception, Data_Warning,
 )
 
-def compute_conditions(altitude,velocity):
+def compute_conditions(altitude,mach):
     
     # ----- Add equations here ---------------------############
     
@@ -30,13 +30,11 @@ def compute_conditions(altitude,velocity):
     
     mew = 0
     
-    Re = 0
-    
     rho = 0
     
     c = 0
     
-    Ma = 0
+    velocity = 0
     
     # ----------------------------------------------############
     
@@ -47,7 +45,6 @@ def compute_conditions(altitude,velocity):
     conditions.freestream.viscosity           = mew # kinematic viscosity
     conditions.freestream.velocity            = velocity
     conditions.freestream.mach_number         = Ma
-    conditions.freestream.reynolds_number     = Re
     conditions.freestream.density             = rho
     conditions.freestream.altitude            = altitude
     conditions.freestream.speed_of_sound      = c

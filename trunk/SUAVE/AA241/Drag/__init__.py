@@ -1,1 +1,1 @@
-from drag_test import total_drag
+from fuselage_parasite_drag import fuselage_parasite_drag
