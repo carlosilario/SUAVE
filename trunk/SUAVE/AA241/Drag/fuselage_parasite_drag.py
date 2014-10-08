@@ -37,7 +37,7 @@ def fuselage_parasite_drag(vehicle,conditions):
     Ma = conditions.freestream.mach_number
     reference_area = vehicle.reference_area
     
-    cf = skin_friction_cofficient(Re,Ma,T)
+    cd_skin_friction = skin_friction_drag_cofficient(Re,Ma,T)
     
     cd_upsweep = upsweep_drag_coefficient(reference_area)
     
@@ -48,6 +48,15 @@ def fuselage_parasite_drag(vehicle,conditions):
     total_cd = 0
     
     return total_cd
+    
+def skin_friction_drag_cofficient(Re,Ma,T):
+    
+    # ----- Add equations here ---------------------############
+    
+    
+    cd_skin_friction = 0
+    
+    return cd_skin_friction
     
 def skin_friction_cofficient(Re,Ma,T):
     
