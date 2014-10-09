@@ -16,7 +16,6 @@ from SUAVE.Attributes import Units
 
 import numpy as np
 import pylab as plt
-from SUAVE.Attributes.Atmospheres       import Atmosphere
 
 import copy, time
 from SUAVE.AA241.Conditions.compute_conditions import compute_conditions
@@ -42,6 +41,14 @@ def full_setup():
     cd_fuselage = fuselage_parasite_drag(vehicle,conditions)
     
     print cd_fuselage
+    
+    # ------- Calculate flat plate area -------------------############
+    
+    flat_plate_area = 0
+
+    # -----------------------------------------------------############
+    
+    print flat_plate_area
     
     return vehicle
 
@@ -184,7 +191,7 @@ def vehicle_setup():
     
     fuselage.number_coach_seats = 0
     fuselage.seats_abreast      = 0.
-    fuselage.seat_pitch         = 0.
+    fuselage.seat_pitch         = 0. 
     fuselage.fineness.nose      = 0.
     fuselage.fineness.tail      = 0.
     fuselage.lengths.fore_space = 0.
@@ -202,8 +209,8 @@ def vehicle_setup():
     fuselage.lengths.cabin = 0.
     fuselage.lengths.total = 0.
     fuselage.areas.wetted  = 0.
-    fuselage.areas.front_projected     = 0.
     fuselage.effective_diameter        = 0.
+    fuselage.areas.front_projected     = 0.
     
     # add to vehicle
     vehicle.append_component(fuselage)

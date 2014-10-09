@@ -24,17 +24,17 @@ def compute_conditions(altitude,mach):
     
     # ----- Add equations here ---------------------############
     
-    T = 0
+    T = 0.
     
-    p = 0
+    p = 0.
     
-    mew = 0
+    mew = 0.
     
-    rho = 0
+    rho = 0.
     
-    c = 0
+    c = 0.
     
-    velocity = 0
+    velocity = 0.
     
     # ----------------------------------------------############
     
@@ -44,7 +44,7 @@ def compute_conditions(altitude,mach):
     conditions.freestream.pressure            = p
     conditions.freestream.viscosity           = mew # kinematic viscosity
     conditions.freestream.velocity            = velocity
-    conditions.freestream.mach_number         = Ma
+    conditions.freestream.mach_number         = mach
     conditions.freestream.density             = rho
     conditions.freestream.altitude            = altitude
     conditions.freestream.speed_of_sound      = c
