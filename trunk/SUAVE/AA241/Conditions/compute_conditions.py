@@ -1,7 +1,7 @@
 # compute_conditions.py
 #
 # Created:  Tim MacDonald, Sep 2014
-# Modified: 
+# Modified: Tim Macdonald, Oct 2014
 
 import SUAVE
 
@@ -22,19 +22,25 @@ Data, Container, Data_Exception, Data_Warning,
 
 def compute_conditions(altitude,mach):
     
-    # ----- Add equations here ---------------------############
+    # ----- Standard Atmosphere Model --------------############
     
-    T = 0.
+    if altitude < 11000:
+        T = 15.04-0.00649*altitude
+    else:
+        T = -56.46
     
-    p = 0.
+    if altitude < 11000:
+        p = 101.29*((T+273.15)/288.08)**5.256
+    else:
+        p = 22.65*np.exp(1.73-0.000157*altitude)
     
-    mew = 0.
+    mew = (1.458*10**-6*np.sqrt(T+273.15)) / (1+110.4/(T+273.15))
     
-    rho = 0.
+    rho = p/(.287*(T+273.15))
     
-    c = 0.
+    c = np.sqrt(287*1.4*(T+273.15))
     
-    velocity = 0.
+    velocity = mach*c
     
     # ----------------------------------------------############
     

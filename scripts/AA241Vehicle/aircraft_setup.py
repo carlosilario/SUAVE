@@ -1,7 +1,7 @@
 # aircraft_setup.py
 # 
 # Created:  SUave Team    , Aug 2014
-# Modified: Tim MacDonald , Oct 2014
+# Modified: Tim MacDonald , Nov 2014
 
 """ setup file for a mission with an aircraft of your choice
 """
@@ -32,7 +32,7 @@ def full_setup():
     # ------- Set sizing case here ------------------------############
     
     altitude = 35000 * Units.ft      # default is meters
-    mach = 0.8    
+    mach = 0.8
     
     # -----------------------------------------------------############
     
@@ -44,7 +44,7 @@ def full_setup():
     
     # ------- Calculate flat plate area -------------------############
     
-    flat_plate_area = 0
+    flat_plate_area = cd_fuselage*vehicle.reference_area
 
     # -----------------------------------------------------############
     
@@ -80,7 +80,7 @@ def vehicle_setup():
     vehicle.envelope.limit_load    = 0.
 
     # basic parameters
-    vehicle.reference_area        = 0.   # m^2    
+    vehicle.reference_area        = 125.   # m^2    
     vehicle.passengers            = 0
     vehicle.systems.control       = "fully powered" # Choose type of control surface here
     vehicle.systems.accessories   = "medium range" # Choose type of mission here 
@@ -189,28 +189,28 @@ def vehicle_setup():
     fuselage = SUAVE.Components.Fuselages.Fuselage()
     fuselage.tag = 'Fuselage'
     
-    fuselage.number_coach_seats = 0
-    fuselage.seats_abreast      = 0.
-    fuselage.seat_pitch         = 0. 
-    fuselage.fineness.nose      = 0.
-    fuselage.fineness.tail      = 0.
-    fuselage.lengths.fore_space = 0.
-    fuselage.lengths.aft_space  = 0.
-    fuselage.width                              = 0.
-    fuselage.heights.maximum                    = 0. 
+    fuselage.number_coach_seats = 151
+    fuselage.seats_abreast      = 6.
+    fuselage.seat_pitch         = 32. * Units.inch
+    fuselage.fineness.nose      = 1.5
+    fuselage.fineness.tail      = 2.0
+    fuselage.lengths.fore_space = 4. * Units.feet
+    fuselage.lengths.aft_space  = 4. * Units.feet
+    fuselage.width                              = 154. * Units.inch
+    fuselage.heights.maximum                    = 4.06 
     fuselage.areas.side_projected               = 0. 
     fuselage.heights.at_quarter_length          = 0.
     fuselage.heights.at_three_quarters_length   = 0.
     fuselage.heights.at_wing_root_quarter_chord = 0.
     fuselage.differential_pressure              = 0. # Maximum differential pressure
     
-    fuselage.lengths.nose  = 0.
-    fuselage.lengths.tail  = 0.
-    fuselage.lengths.cabin = 0.
-    fuselage.lengths.total = 0.
-    fuselage.areas.wetted  = 0.
-    fuselage.effective_diameter        = 0.
-    fuselage.areas.front_projected     = 0.
+    fuselage.lengths.nose  = 231. * Units.inch
+    fuselage.lengths.tail  = 308. * Units.inch
+    fuselage.lengths.cabin = 1012. * Units.inch
+    fuselage.lengths.total = 1551. * Units.inch
+    fuselage.areas.wetted  = 322.06
+    fuselage.effective_diameter        = 3.99
+    fuselage.areas.front_projected     = 3.99**2 * np.pi / 4
     
     # add to vehicle
     vehicle.append_component(fuselage)
