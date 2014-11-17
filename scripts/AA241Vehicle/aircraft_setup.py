@@ -50,6 +50,10 @@ def full_setup():
     
     print flat_plate_area
     
+    cl_initial = initial_cruise_lift(vehicle,conditions)
+    
+    max_thickness_sweep(vehicle,conditions)
+    
     return vehicle
 
 def vehicle_setup():
