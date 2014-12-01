@@ -20,6 +20,8 @@ import pylab as plt
 import copy, time
 from SUAVE.AA241.Conditions.compute_conditions import compute_conditions
 from SUAVE.AA241.Drag.fuselage_parasite_drag   import fuselage_parasite_drag
+from SUAVE.AA241.Lift.initial_cruise_lift      import initial_cruise_lift
+from SUAVE.AA241.Sizing_Plots.max_thickness_sweep import max_thickness_sweep
 
 from SUAVE.Structure import (
 Data, Container, Data_Exception, Data_Warning,
@@ -32,7 +34,7 @@ def full_setup():
     # ------- Set sizing case here ------------------------############
     
     altitude = 35000 * Units.ft      # default is meters
-    mach = 0.8
+    mach = 0.78
     
     # -----------------------------------------------------############
     
@@ -52,6 +54,10 @@ def full_setup():
     
     cl_initial = initial_cruise_lift(vehicle,conditions)
     
+    conditions.cl_initial = cl_initial
+    
+    print cl_initial
+    
     max_thickness_sweep(vehicle,conditions)
     
     return vehicle
@@ -70,7 +76,7 @@ def vehicle_setup():
     # ------------------------------------------------------------------    
 
     # mass properties
-    vehicle.mass_properties.max_takeoff               = 0.   # kg
+    vehicle.mass_properties.max_takeoff               = 85000.   # kg
     vehicle.mass_properties.operating_empty           = 0.   # kg
     vehicle.mass_properties.takeoff                   = 0.   # kg
     vehicle.mass_properties.max_zero_fuel             = 0.   # kg

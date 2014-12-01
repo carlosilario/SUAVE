@@ -54,5 +54,6 @@ def compute_conditions(altitude,mach):
     conditions.freestream.density             = rho
     conditions.freestream.altitude            = altitude
     conditions.freestream.speed_of_sound      = c
+    conditions.gravity                        = 9.81 # m/s^2
     
     return conditions
